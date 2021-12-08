@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #C2FFF9;
+}
+
+#grid {
+	display: grid;
+	width: 100vw;
+	height: 100vh;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-rows: 1fr 4fr 1fr;
+	grid-template-areas:
+	"header1 header header2"
+	"nav contents aside"
+	"footer footer footer";
+}
+
+#header {
+	display: flex;
+	grid-area: header;
+	justify-content:center;
+	align-items:center;
+	color: green;
+}
+
+#header1 {
+	grid-area: header1;
+}
+
+#header2 {
+	grid-area: header2;
+}
+
+main {
+	grid-area: contents;
+}
+
+#mainSection {
+	display: grid;
+	height:70vh;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(9, 1fr);
+	grid-template-areas:
+	"first"
+	"second"
+	"third"
+	"forth"
+	"fifth"
+	"sixth"
+	"seventh"
+	"eighth"
+	"ninth";
+}
+
+footer {
+	grid-area: footer;
+}
+
+nav {
+	grid-area: nav;
+}
+
+aside {
+	grid-area: aside;
+}
+
+#first {
+	grid-area: first;
+}
+
+#second {
+	grid-area: second;
+}
+
+#third {
+	grid-area: third;
+}
+
+#forth {
+	grid-area: forth;
+}
+
+#fifth {
+	grid-area: fifth;
+}
+#sixth{
+	grid-area:sixth;
+}
+#seventh{
+	grid-area:seventh;
+}
+#eighth{
+	grid-area:eighth;
+}
+#ninth{
+	grid-area:ninth;
+}
