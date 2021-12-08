@@ -20,6 +20,10 @@
 	String teleFront = request.getParameter("telephoneFront");
 	String telephone = request.getParameter("telephone");
 	String verifiNumber = request.getParameter("verifiNumber");
+	
+	if(checkAnotherEmail == ""){
+		checkAnotherEmail = "없음";
+	}
 	%>
 	<span>아이디 : </span><%=id%><br>
 	<span>비밀번호 : </span><%=password%><br>

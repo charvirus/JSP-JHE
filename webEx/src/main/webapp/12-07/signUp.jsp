@@ -33,13 +33,13 @@
 					</article>
 					<article id="forth">
 						<h1>이름</h1>
-						<input type="text" name="name" required>
+						<input type="text" id="name" name="name" required>
 					</article>
-					<article  id="fifth">
+					<article id="fifth">
 						<h1>생년월일</h1>
-						<input type="date" name="date" required>
+						<input type="date" id="date" name="date" required>
 					</article>
-					<article  id="sixth">
+					<article id="sixth">
 						<h1>성별</h1>
 						<select name="gender">
 							<option value>성별</option>
@@ -49,8 +49,7 @@
 					</article>
 					<article id="seventh">
 						<h1>본인 확인 이메일(선택)</h1>
-						<input type="text" name="checkAnotherEmail"
-							placeholder="선택입력">
+						<input type="text" name="checkAnotherEmail" placeholder="선택입력">
 					</article>
 					<article id="eighth">
 						<h1>휴대전화</h1>
@@ -79,7 +78,31 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
 		function check(form) {
-			if (form.pw.value !== form.pwCheck.value) {
+			if (form.id.value == "") {
+				alert("ID를 입력해주세요");
+				form.id.focus();
+			} else if (form.pw.value == "") {
+				alert("비밀번호를 입력해주세요");
+				form.pw.focus();
+			} else if (form.pwCheck.value == "") {
+				alert("비밀번호 확인칸을 입력해주세요");
+				form.pwCheck.focus();
+			} else if (form.name.value == "") {
+				alert("이름을 입력해주세요");
+				form.name.focus();
+			} else if (form.date.value == "") {
+				alert("생년월일을 적어주세요.");
+			} else if (form.gender.value == "") {
+				alert("성별을 입력해주세요.");
+			} else if (form.telephoneFront.value == "") {
+				alert("국가번호를 입력해주세요.");
+			} else if (form.telephone.value == "") {
+				alert("전화번호를 입력해주세요.");
+				form.telephone.focus();
+			} else if (form.verifiNumber.value == "") {
+				alert("인증번호를 입력해주세요.");
+				form.verifiNumber.focus();
+			} else if (form.pw.value !== form.pwCheck.value) {
 				alert("비밀번호가 다릅니다.");
 				form.pw.value = "";
 				form.pwCheck.value = "";
