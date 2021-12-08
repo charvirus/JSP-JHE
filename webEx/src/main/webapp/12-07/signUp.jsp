@@ -7,35 +7,20 @@
 <title>회원가입</title>
 </head>
 <body>
-	<form method="post" action="signUpPro.jsp">
+	<form method="post" action="signUpPro.jsp" onsubmit="return false">
 		<h1>아이디</h1>
-		<br> <input type="text" name="id" required> <span>@naver.com</span><br>
+		<input type="text" name="id" > <span>@naver.com</span><br>
 		<h1>비밀번호</h1>
-		<br> <input type="password" name="pw" required><br>
+		<input type="password" id="pw" name="pw" required><br>
 		<h1>비밀번호 재확인</h1>
-		<br> <input type="password" name="pwCheck" required><span>설정하려는
-			비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.</span><br>
+		<input type="password" id="pwCheck" name="pwCheck" required>
+		<br><span>설정하려는 비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.</span><br>
 		<h1>이름</h1>
-		<br> <input type="text" name="name" required><br>
+		<input type="text" name="name" required><br>
 		<h1>생년월일</h1>
-		<br> <input type="text" name="year" placeholder="년(4자)" required><br>
-		<select name="month" required>
-			<option value>월</option>
-			<option value="01">1</option>
-			<option value="02">2</option>
-			<option value="03">3</option>
-			<option value="04">4</option>
-			<option value="05">5</option>
-			<option value="06">6</option>
-			<option value="07">7</option>
-			<option value="08">8</option>
-			<option value="09">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-		</select><br> <input type="text" name="day" placeholder="일" required><br>
+		<input type="date" name="date" required><br>
 		<h1>성별</h1>
-		<br> <select name="gender required">
+		<select name="gender">
 			<option value>성별</option>
 			<option value="남">남</option>
 			<option value="여">여</option>
@@ -53,8 +38,20 @@
 		</select><br> <input type="text" name="telephone" placeholder="전화번호 입력" required> <a>인증번호
 			받기</a><br> <input type="text" name="verifiNumber" placeholder="인증번호 입력하세요" required>
 		<span>인증받은 후 인증번호를 입력해야합니다.</span><br> <input type="submit"
-			value="가입하기">
-
+			value="가입하기" onclick="check(form)">
 	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		function check(form){
+			if(form.pw.value !== form.pwCheck.value){
+				alert("비밀번호가 다릅니다.");
+				form.pw.value = "";
+				form.pwCheck.value = "";
+				form.pw.focus();
+			}else{
+				form.submit();
+			}
+		}
+	</script>
 </body>
 </html>
