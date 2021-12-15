@@ -42,7 +42,7 @@ public class BoardDAO {
 		try {
 			conn = getConnection();
 
-			String str = "select * from board";
+			String str = "select * from board order by no desc";
 			pstmt = conn.prepareStatement(str);
 			rs = pstmt.executeQuery();
 
