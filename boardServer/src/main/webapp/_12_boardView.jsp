@@ -74,7 +74,7 @@ String uid = boards.get(0).getId();
 				<button
 					onclick="location.href = '_13_boardUpdate.jsp?no=<%=strNo%>'">수정</button>
 				<button
-					onclick="location.href = '_15_boardDeletePro.jsp?no=<%=strNo%>'">삭제</button>
+					onclick="location.href = '_15_boardDelete.jsp?no=<%=strNo%>'">삭제</button>
 				<%
 				} else {
 				%>

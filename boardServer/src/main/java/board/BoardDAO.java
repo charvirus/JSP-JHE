@@ -136,14 +136,15 @@ public class BoardDAO {
 		}
 	}
 
-	public String getBoardPW(int no) {
+	public String getBoardPW(String no) {
 		String getPw = "";
+		int tempNo = Integer.parseInt(no);
 		try {
 			conn = getConnection();
 			String str = "Select * from board where no = ?";
 			
 			pstmt = conn.prepareStatement(str);
-			pstmt.setInt(1, no);
+			pstmt.setInt(1, tempNo);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next())
