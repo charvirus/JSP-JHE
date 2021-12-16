@@ -12,14 +12,8 @@
 
 	if (ses != null) {
 		session.removeAttribute("log");
-	%>
-	<script>
-		alert("로그아웃 되었습니다");
-	</script>
-	<%
 	}
 	response.sendRedirect("_7_boardList.jsp");
-	
 	%>
 </body>
 </html>

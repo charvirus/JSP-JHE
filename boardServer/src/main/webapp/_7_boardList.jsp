@@ -19,7 +19,6 @@
 	<div id="grid">
 		<header id="sub1"></header>
 		<header id="mainHeader">
-
 			<%
 			if (ses != null) {
 			%>
@@ -32,8 +31,7 @@
 			<%
 			} else {
 			%>
-			로그인 해주세요
-			<button onclick="location.href = '_5_login.jsp'">로그인</button>
+			<span>로그인 해주세요 </span><button id="login" onclick="location.href = '_5_login.jsp'">로그인</button>
 			<%
 			}
 			%>
@@ -45,20 +43,20 @@
 				<table id="listTable" border="solid 1px"
 					style="border-collapse: collapse;" width="100%">
 					<tr id="rowHead">
-						<td>no</td>
-						<td>title</td>
-						<td>id</td>
-						<td>like</td>
-						<td>regdate</td>
+						<td><center>no</center></td>
+						<td><center>title</center></td>
+						<td><center>id</center></td>
+						<td><center>like</center></td>
+						<td><center>regdate</center></td>
 					</tr>
 					<%
 					for (int i = 0; i < boards.size(); i++) {
 					%>
 					<tr>
-						<td><%=boards.get(i).getNo()%></td>
+						<td><center><%=boards.get(i).getNo()%></center></td>
 						<td><a href="_12_boardView.jsp?no=<%=boards.get(i).getNo()%>"><%=boards.get(i).getTitle()%></a></td>
 						<td><%=boards.get(i).getId()%></td>
-						<td><%=boards.get(i).getLikes()%></td>
+						<td><center><%=boards.get(i).getLikes()%></center></td>
 						<td><%=boards.get(i).getRegDate()%></td>
 					</tr>
 					<%
@@ -66,7 +64,6 @@
 					%>
 				</table>
 			</section>
-
 		</main>
 		<aside></aside>
 		<footer></footer>

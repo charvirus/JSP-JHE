@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>GREEN</title>
+
+<style>
+</style>
 <link rel="stylesheet" type="text/css" href="_1_index.css">
 </head>
 <body>

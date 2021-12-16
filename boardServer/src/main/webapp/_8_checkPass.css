@@ -1,19 +1,26 @@
 @charset "UTF-8";
+span {
+	white-space: pre;
+}
+
 * {
 	margin: 0;
 	padding: 0;
+	
 }
 
 body {
 	font-family: 'NanumBarunGothic', 'serif';
 }
-
+#h1{
+	font-size: 2em;
+}
 #grid {
 	display: grid;
 	width: 100vw;
 	height: 100vh;
-	grid-template-columns: 1fr 4fr 1fr;
-	grid-template-rows: 1fr 4fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-areas:
 	"header1 mainHeader header2"
 	"nav contents aside"
@@ -21,34 +28,32 @@ body {
 	;
 }
 
-#mainHeader {
-	grid-area: mainHeader;
-	background-color: rgb(250, 237, 198);
-	display:flex;
-	flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-#sub1{
-	grid-area: header1;
-	background-color: rgb(250, 237, 198);
-}
-#sub2{
-	grid-area: header2;
-	background-color: rgb(250, 237, 198);
-}
-
 main {
 	grid-area: contents;
 	background-color: rgb(250, 187, 81);
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
 }
 
-#login{
-	width:5%;
-	height:25%;
+#mainHeader {
+	grid-area: mainHeader;
+	background-color: rgb(250, 237, 198);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#sub1 {
+	grid-area: header1;
+	background-color: rgb(250, 237, 198);
+}
+
+#sub2 {
+	grid-area: header2;
+	background-color: rgb(250, 237, 198);
 }
 
 nav {
@@ -64,4 +69,28 @@ aside {
 footer {
 	grid-area: footer;
 	background-color: rgb(250, 237, 198);
+}
+
+#center2{
+	
+	height:50%;
+	display:flex;
+}
+
+#idpws  {
+	display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#submit{
+	align-self: flex-end;
+	width : 25%;
+	height : 25%;
+}
+
+#idpws span{
+	font-size: 120%;
 }

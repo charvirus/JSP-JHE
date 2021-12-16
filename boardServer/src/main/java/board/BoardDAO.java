@@ -136,15 +136,14 @@ public class BoardDAO {
 		}
 	}
 
-	public String getBoardPW(String no) {
+	public String getBoardPW(int no) {
 		String getPw = "";
-
 		try {
 			conn = getConnection();
 			String str = "Select * from board where no = ?";
 			
 			pstmt = conn.prepareStatement(str);
-			pstmt.setInt(1, Integer.parseInt(no));
+			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next())
@@ -157,13 +156,13 @@ public class BoardDAO {
 	}
 	
 	
-	public void deleteBoard(String no) {
+	public void deleteBoard(int no) {
 		try {
 			conn = getConnection();
 			String str = "delete from board where no = ?";
 			
 			pstmt = conn.prepareStatement(str);
-			pstmt.setInt(1, Integer.parseInt(no));
+			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -171,4 +170,17 @@ public class BoardDAO {
 		}
 	}
 	
+	public void upLike(int no) {
+		try {
+			conn = getConnection();
+			String str = "update board set likes = likes + 1 where no = ?";
+			
+			pstmt = conn.prepareStatement(str);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
