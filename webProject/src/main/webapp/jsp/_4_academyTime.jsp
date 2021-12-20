@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MovieBox</title>
+<title>MovieBox - 아카데미 작품상 목록</title>
 <%
 	MovieListDAO dao = MovieListDAO.getInstance();
 	ArrayList<MovieListDTO> boards = dao.getMoviesbyTimeShort();
@@ -25,7 +25,7 @@
 		<main>	
 			<div>
 				<table id="ad" border="solid 1px"
-					style="border-collapse: collapse;" width="100%">
+					style="border-collapse: collapse;" width="50%">
 				<%
 					for(int i = 0;i<boards.size();i++){
 				%>
@@ -36,7 +36,7 @@
 						<td><%=boards.get(i).getMovie_director() %><br>
 							<%=boards.get(i).getMovie_mainactor() %></td>
 					</tr>
-				<%} %>
+				<%}%>
 				</table>
 			</div>
 		</main>

@@ -9,7 +9,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="../js/_5_boxOffice.js"></script>
-<title>일별 박스 오피스</title>
+<title>MovieBox - 일별 박스오피스</title>
 </head>
 <body>
 	<div id="grid">
