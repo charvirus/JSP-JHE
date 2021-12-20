@@ -10,7 +10,7 @@
 	<main id="headerMain">
 		<ul id="headerMenu1">
 			<li><a href="_2_academyDate.jsp">아카데미 작품상</a></li>
-			<li>극장 상영작 영화</li>
+			<li><a href="_5_boxOffice.jsp">극장 상영작 영화</a></li>
 			<li>영화 게시판</li>
 			<li>마이페이지</li>
 		</ul>

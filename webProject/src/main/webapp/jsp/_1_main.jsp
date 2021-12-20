@@ -22,9 +22,9 @@
 			</div>
 		</main>
 		<aside></aside>
-		<footer></footer>
-		<footer>푸터</footer>
-		<footer></footer>
+		<footer id="subfooter1"></footer>
+		<footer id="mainfooter"><jsp:include page="bottom.jsp"></jsp:include></footer>
+		<footer id="subfooter2"></footer>
 	</div>
 </body>
 </html>
