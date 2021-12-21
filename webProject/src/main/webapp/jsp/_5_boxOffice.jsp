@@ -18,26 +18,27 @@
 		<header id="subheader2"></header>
 		<nav></nav>
 		<main>
-		<div>
-			<table id="boxOffice" border="1" width="50%">
-				<tr id="boxOfficeHeader">
-					<td width="2%"><center>순위</center></td>
-					<td width="25%"><center>영화명</center></td>
-					<td width="5%"><center>개봉일</center></td>
-					<td width="7%"><center>일일 관객수</center></td>
-					<td width="7%"><center>누적 관객수</center></td>
-				</tr>
-			</table>
-		</div></main>
+			<div>
+				<table id="boxOffice" border="1" width="50%">
+					<tr id="boxOfficeHeader">
+						<td width="2%"><center>순위</center></td>
+						<td width="25%"><center>영화명</center></td>
+						<td width="5%"><center>개봉일</center></td>
+						<td width="7%"><center>일일 관객수</center></td>
+						<td width="7%"><center>누적 관객수</center></td>
+					</tr>
+				</table>
+			</div>
+		</main>
 		<aside></aside>
 		<footer id="subfooter1"></footer>
 		<footer id="mainfooter"><jsp:include page="bottom.jsp"></jsp:include></footer>
 		<footer id="subfooter2"></footer>
 	</div>
 	<script>
-	$(document).ready(function(){
-		getAPI();
-	});
+		$(document).ready(function() {
+			getAPI();
+		});
 	</script>
 </body>
 </html>

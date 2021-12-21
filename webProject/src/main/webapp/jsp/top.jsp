@@ -15,8 +15,8 @@ String ses = (String) session.getAttribute("log");
 		<ul id="headerMenu1">
 			<li><a href="_2_academyDate.jsp">아카데미 작품상</a></li>
 			<li><a href="_5_boxOffice.jsp">극장 상영작 영화</a></li>
-			<li>영화 게시판</li>
-			<li>마이페이지</li>
+			<li><a href="_9_talkList.jsp">영화 게시판</a></li>
+			<li><a href="_14_MyPageCheck.jsp">마이페이지</a></li>
 		</ul>
 		<ul id="headerMenu2">
 			<%
