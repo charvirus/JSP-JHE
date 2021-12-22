@@ -28,7 +28,6 @@ String ses = (String) session.getAttribute("log");
 			<%
 			} else {
 			%>
-
 			<li id="headerLogin"><a href="_6_login.jsp">로그인</a></li>
 			<li id="headerSignUp"><a href="_7_signUp.jsp">회원가입</a></li>
 			<%

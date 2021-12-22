@@ -11,6 +11,7 @@
 <%
 	MovieListDAO dao = MovieListDAO.getInstance();
 	ArrayList<MovieListDTO> boards = dao.getMoviesbyScoreHigh();
+	String ses = (String) session.getAttribute("log");
 %>
 </head>
 <body>
@@ -23,22 +24,39 @@
 		<jsp:include page="academyNav.jsp"></jsp:include>
 		</div>
 		<main>	
-			<div>
-				<table id="ad" border="solid 1px"
-					style="border-collapse: collapse;" width="50%">
-				<%
-					for(int i = 0;i<boards.size();i++){
-				%>
+			<section>
+				<table id="ad" border="solid 1px" style="border-collapse: collapse;"
+					width="50%">
 					<tr>
-						<td><%=boards.get(i).getMovie_name() %></td>
-						<td><%=boards.get(i).getMovie_reldate() %></td>
-						<td><%=boards.get(i).getMovie_score() %></td>
-						<td><%=boards.get(i).getMovie_director() %><br>
-							<%=boards.get(i).getMovie_mainactor() %></td>
+						<td><center>제목</center></td>
+						<td><center>개봉일</center></td>
+						<td><center>상영 시간</center></td>
+						<td><center>IMDB 점수</center></td>
+						<td><center>감독/주연배우</center></td>
 					</tr>
-				<%} %>
+					<%
+					for (int i = 0; i < boards.size(); i++) {
+					%>
+					<tr>
+						<td><%=boards.get(i).getMovie_name()%></td>
+						<td><%=boards.get(i).getMovie_reldate()%></td>
+						<td><%=boards.get(i).getMovie_time() %></td>
+						<td><%=boards.get(i).getMovie_score()%></td>
+						<td><%=boards.get(i).getMovie_director()%><br>
+						<%=boards.get(i).getMovie_mainactor()%></td>
+						<%
+						if (ses != null) {
+						%>
+							<td><button onclick="location.href='_16_addMovieWish.jsp?no=<%=boards.get(i).getMovie_no()%>'">나중에 볼 영화 찜하기</button></td>
+						<%
+						}
+						%>
+					</tr>
+					<%
+					}
+					%>
 				</table>
-			</div>
+			</section>
 		</main>
 		<aside></aside>
 		<footer id="subfooter1"></footer>

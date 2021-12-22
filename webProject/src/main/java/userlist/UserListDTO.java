@@ -3,7 +3,7 @@ package userlist;
 import java.sql.Timestamp;
 
 public class UserListDTO {
-	private int user_no;
+	private int user_no ,cnt_talk_title,cnt_movie_name;
 	private String user_id, user_pw, user_nickname;
 	private Timestamp user_regdate;
 
@@ -21,6 +21,15 @@ public class UserListDTO {
 		this.user_nickname = user_nickname;
 	}
 
+	public UserListDTO(String user_nickname, String user_id,int cnt_talk_title, int cnt_movie_name, Timestamp user_regdate) {
+		this.user_nickname = user_nickname;
+		this.user_id = user_id;
+		this.cnt_talk_title = cnt_talk_title;
+		this.cnt_movie_name = cnt_movie_name;
+		this.user_regdate = user_regdate;
+		
+	}
+	
 	public String getUser_pw() {
 		return user_pw;
 	}
@@ -49,4 +58,13 @@ public class UserListDTO {
 		return user_regdate;
 	}
 
+	public int getCnt_talk_title() {
+		return cnt_talk_title;
+	}
+
+	public int getCnt_movie_name() {
+		return cnt_movie_name;
+	}
+	
+	
 }

@@ -51,7 +51,7 @@ public class UserListDAO {
 		try {
 			conn = DBManager.getConnection();
 
-			String str = "Select * from userlist where id = ?";
+			String str = "Select * from userlist where user_id = ?";
 			pstmt = conn.prepareStatement(str);
 			pstmt.setString(1, inpId);
 			rs = pstmt.executeQuery();
@@ -74,6 +74,39 @@ public class UserListDAO {
 		return userList;
 	}
 
+	public ArrayList<UserListDTO> getUserMyPageInfo(String inpId){
+		try {
+			conn = DBManager.getConnection();
+
+			String str = "select user_nickname, user_id,\r\n"
+					+ "(select count(*) from talklist where user_id = \"brandon413\")as '게시글 수',\r\n"
+					+ "(select count(*) from wishlist where user_id = \"brandon413\")as '찜한 영화 수',"
+					+ "user_regdate\r\n"
+					+ "from userlist \r\n"
+					+ "where user_id =  ?";
+			pstmt = conn.prepareStatement(str);
+			pstmt.setString(1, inpId);
+			rs = pstmt.executeQuery();
+
+			userList = new ArrayList<>();
+
+			while (rs.next()) {
+				
+				String nickname = rs.getString(1);
+				String id = rs.getString(2);
+				int talk_title_cnt = Integer.parseInt(rs.getString(3));
+				int movie_name_cnt = Integer.parseInt(rs.getString(4));
+				Timestamp regdate = Timestamp.valueOf(rs.getString(5));
+
+				userList.add(new UserListDTO(nickname, id, talk_title_cnt, movie_name_cnt ,regdate));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
+	}
+	
 	public int addUser(UserListDTO user) {
 		if (checkUser(user.getUser_id())) {
 
@@ -102,7 +135,9 @@ public class UserListDAO {
 		}
 		return -1;
 	}
-
+	
+	
+	
 	public boolean checkUser(String id) {
 		userList = getUserList();
 		for (UserListDTO user : userList) {
