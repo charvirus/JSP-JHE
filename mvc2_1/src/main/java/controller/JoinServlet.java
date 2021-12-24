@@ -15,7 +15,7 @@ import model.dto.UserDTO;
 /**
  * Servlet implementation class JoinServlet
  */
-@WebServlet("/views/join")
+@WebServlet("//join")
 public class JoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
