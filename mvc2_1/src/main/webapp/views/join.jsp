@@ -7,7 +7,8 @@
 <title>회원가입</title>
 </head>
 <body>
-	<form method="post" action="join">
+	<form method="post" action="service">
+	<input type="hidden" name="command" value="join">
 		<h1>회원가입</h1>
 		<span>ID:&#9;</span><input type="text" name="id">
 		<span>PW:&#9;</span><input type="text" name="pw">

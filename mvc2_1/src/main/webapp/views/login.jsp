@@ -7,7 +7,8 @@
 <title>로그인</title>
 </head>
 <body>
-	<form method="post" action="login">
+	<form method="post" action="service">
+		<input type="hidden" name="command" value="login">
 		<h1>로그인</h1>
 		<span>ID:&#9;</span><input type="text" name="id">
 		<span>PW:&#9;</span><input type="text" name="pw">

@@ -16,12 +16,12 @@ String ses = (String) session.getAttribute("sID");
 	if (ses != null) {
 	%>
 	<span><%=ses%>님</span>
-	<button onclick="location.href = 'logout'">로그아웃</button>
+	<button onclick="location.href = 'service?command=logout'">로그아웃</button>
 	<%
 	} else {
 	%>
-	<button onclick="location.href='login.jsp'">로그인</button>
-	<button onclick="location.href='join.jsp'">회원가입</button>
+	<button onclick="location.href = 'service?command=loginForm'">로그인</button>
+	<button onclick="location.href = 'service?command=joinForm'">회원가입</button>
 	<%
 	}
 	%>

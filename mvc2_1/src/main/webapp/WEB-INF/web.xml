@@ -8,11 +8,32 @@
 		<welcome-file>/views/main.jsp</welcome-file>
 	</welcome-file-list>
 
+<servlet>
+	<servlet-name>service</servlet-name>
+	<servlet-class>controller.Service</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>service</servlet-name>
+	<url-pattern>/service</url-pattern>
+</servlet-mapping>
+
+<!--
 	<servlet>
-		<servlet-name>test</servlet-name>
-		<servlet-class>controller.TestServlet</servlet-class>
+		<servlet-name>/views/join</servlet-name>
+		<servlet-class>controller.JoinServlet</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>/views/login</servlet-name>
+		<servlet-class>controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>/views/logout</servlet-name>
+		<servlet-class>controller.LogoutServlet</servlet-class>
+	</servlet>
+	 -->
+	
+	
+<!-- 	<servlet>
 		<servlet-name>main</servlet-name>
 		<jsp-file>/views/main.jsp</jsp-file>
 	</servlet>
@@ -23,19 +44,24 @@
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<jsp-file>/views/login.jsp</jsp-file>
-	</servlet>
+	</servlet> -->
 	
 	
-<!-- 
+<!-- 	<servlet-mapping>
+		<servlet-name>join</servlet-name>
+		<url-pattern>/Join</url-pattern>
+	</servlet-mapping> 
+
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
-		<url-pattern>/LoginServlet</url-pattern>
+		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
-		<servlet-name>join</servlet-name>
-		<url-pattern>/JoinServlet</url-pattern>
+		<servlet-name>logout</servlet-name>
+		<url-pattern>/Logout</url-pattern>
 	</servlet-mapping> -->
+	
 
 
 </web-app>
