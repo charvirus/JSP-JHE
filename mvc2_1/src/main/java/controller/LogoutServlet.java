@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 		
 		request.getSession().removeAttribute("sID");
 		
-		String url = "/views/login.jsp";
+		String url = "/views/main.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);	// set
 		dispatcher.forward(request, response);
 	}
