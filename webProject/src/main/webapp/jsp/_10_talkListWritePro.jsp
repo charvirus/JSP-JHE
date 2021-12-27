@@ -13,8 +13,9 @@ request.setCharacterEncoding("UTF-8");
 String id = (String) session.getAttribute("log");
 String title = request.getParameter("title");
 String contents = request.getParameter("contents");
+String password = request.getParameter("pw");
 TalklistDAO dao = TalklistDAO.getInstance();
-TalklistDTO newTalk = new TalklistDTO(id,title,contents);
+TalklistDTO newTalk = new TalklistDTO(id,password,title,contents);
 
 dao.addTalklist(newTalk);
 response.sendRedirect("_9_talkList.jsp");

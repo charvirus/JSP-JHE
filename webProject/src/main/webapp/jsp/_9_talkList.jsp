@@ -38,7 +38,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 					<%	for (int i = 0; i < boards.size(); i++) {	%>
 					<tr>
 						<td><center><%=boards.get(i).getTalk_no() %></center></td>
-						<td><a href="_11_talkListView.jsp?no=<%=boards.get(i).getTalk_no()%>"><%=boards.get(i).getTalk_title() %></a></td>
+						<td><a href="service?command=watchTalk&no=<%=boards.get(i).getTalk_no()%>"><%=boards.get(i).getTalk_title() %></a></td>
 						<td><center><%=boards.get(i).getTalk_likes() %></center></td>
 						<td><center><%=boards.get(i).getUser_id() %></center></td>
 						<td><center><%=sdf.format(boards.get(i).getTalk_regdate()) %></center></td>
@@ -50,7 +50,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				<%	}		%>
 				<div id="buttons">
 					<%if(ses != null){%>
-						<button onclick="location.href = '_10_talkListWrite.jsp'">글쓰기</button>
+						<button onclick="location.href='service?command=writeTalk'">글쓰기</button>
 					<%}else{ %>
 						
 					<%} %>

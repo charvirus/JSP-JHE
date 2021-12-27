@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="../js/_5_boxOffice.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/_5_boxOffice.js"></script>
 <title>MovieBox - 일별 박스오피스</title>
 </head>
 <body>

@@ -11,8 +11,11 @@
 String ses = (String) session.getAttribute("log");
 TalklistDAO dao = TalklistDAO.getInstance();
 String no = request.getParameter("no");
+System.out.println(no);
 ArrayList<TalklistDTO> boards = dao.getTalklistDetails(no);
 String uid = boards.get(0).getUser_id();
+System.out.println(uid);
+String getPw = dao.getBoardPW(no);
 %>
 <title><%=boards.get(0).getTalk_title()%></title>
 </head>
@@ -46,14 +49,18 @@ String uid = boards.get(0).getUser_id();
 					</tr>
 
 				</table>
-				
-				<button onclick="location.href='_9_talkList.jsp'">목록</button>
+
+				<button onclick="location.href='service?command=talkList'">목록</button>
 				<%
 				if (ses != null && uid.equals(ses)) {
 				%>
 				<button
-					onclick="location.href= '_12_talkListUpdate.jsp?no=<%=boards.get(0).getTalk_no()%>'">수정</button>
-				<button onclick="location.href= '_13_talkListDeletePro.jsp?no=<%=boards.get(0).getTalk_no()%>'">삭제</button>
+					onclick="location.href= 'service?command=updateTalkForm&no=<%=boards.get(0).getTalk_no()%>'">수정</button>
+				<form onSubmit="return false;">
+
+					<button onclick="checkPw(form)">삭제</button>
+					삭제하실려면 비밀번호를 입력해주세요<input type="password" id="pw" name="pw">
+				</form>
 				<%
 				} else {
 				%>
@@ -69,6 +76,18 @@ String uid = boards.get(0).getUser_id();
 		<footer id="mainfooter"><jsp:include page="bottom.jsp"></jsp:include></footer>
 		<footer id="subfooter2"></footer>
 	</div>
+	<script>
+		function checkPw(form){
+			let getPw = "<%=getPw%>";
+			if(form.pw.value === getPw){
+				alert("삭제되었습니다.");
+				window.location.href = "service?command=deleteTalk&no=<%=boards.get(0).getTalk_no()%>";
+			} else {
+				document.getElementById('pw').value = '';
+				alert("비밀번호가 다릅니다.");
+			}
+		}
+	</script>
 </body>
 
 </html>

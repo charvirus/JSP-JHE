@@ -141,7 +141,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		<footer id="mainfooter"><jsp:include page="bottom.jsp"></jsp:include></footer>
 		<footer id="subfooter2"></footer>
 	</div>
-	<script type="text/javascript" src="../js/_2_academy.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/_2_academy.js"></script>
 	<script>
 		$(document).ready(function() {
 			tablevisible();

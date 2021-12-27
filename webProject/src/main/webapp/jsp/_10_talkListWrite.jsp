@@ -10,8 +10,7 @@
 <meta charset="UTF-8">
 <title>MovieBox - 영화 게시판</title>
 <%
-TalklistDAO dao = TalklistDAO.getInstance();
-ArrayList<TalklistDTO> boards = dao.getTalkList();
+
 String ses = (String) session.getAttribute("log");
 %>
 </head>
@@ -26,7 +25,7 @@ String ses = (String) session.getAttribute("log");
 			if (ses != null) {
 			%>
 			<section>
-				<form method="post" action="_10_talkListWritePro.jsp">
+				<form method="post" action="service?command=writeTalkPro">
 					<table>
 						<tr>
 							<td>제목</td>
@@ -36,6 +35,10 @@ String ses = (String) session.getAttribute("log");
 							<td>내용</td>
 							<td><textarea name="contents" id="contents" rows="15"
 									cols="75"></textarea></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="password" name="pw" id="pw"></td>
 						</tr>
 					</table>
 					<input type="submit" value="등록">

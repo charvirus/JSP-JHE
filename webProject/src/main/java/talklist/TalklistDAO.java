@@ -35,10 +35,11 @@ public class TalklistDAO {
 				String id = rs.getString(2);
 				String title = rs.getString(3);
 				String content = rs.getString(4);
-				int likes = Integer.parseInt(rs.getString(5));
-				Timestamp regDate = Timestamp.valueOf(rs.getString(6));
+				String password = rs.getString(5);
+				int likes = Integer.parseInt(rs.getString(6));
+				Timestamp regDate = Timestamp.valueOf(rs.getString(7));
 
-				talkList.add(new TalklistDTO(no, id, title, content, likes, regDate));
+				talkList.add(new TalklistDTO(no, id, password, title, content, likes, regDate));
 			}
 
 		} catch (Exception e) {
@@ -61,10 +62,11 @@ public class TalklistDAO {
 				String uid = rs.getString(2);
 				String title = rs.getString(3);
 				String content = rs.getString(4);
-				int likes = Integer.parseInt(rs.getString(5));
-				Timestamp regDate = Timestamp.valueOf(rs.getString(6));
+				String password = rs.getString(5);
+				int likes = Integer.parseInt(rs.getString(6));
+				Timestamp regDate = Timestamp.valueOf(rs.getString(7));
 
-				talkList.add(new TalklistDTO(tno, uid, title, content, likes, regDate));
+				talkList.add(new TalklistDTO(tno, uid,password, title, content, likes, regDate));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,11 +80,12 @@ public class TalklistDAO {
 
 			conn = DBManager.getConnection();
 			
-			String str = "insert into talklist(user_id,talk_title,talk_content) " + "values(?,?,?)";
+			String str = "insert into talklist(user_id,talk_password,talk_title,talk_content) " + "values(?,?,?,?)";
 			pstmt = conn.prepareStatement(str);
 			pstmt.setString(1, talk.getUser_id());
-			pstmt.setString(2, talk.getTalk_title());
-			pstmt.setString(3, talk.getTalk_content());
+			pstmt.setString(2,talk.getTalk_password());
+			pstmt.setString(3, talk.getTalk_title());
+			pstmt.setString(4, talk.getTalk_content());
 			pstmt.executeUpdate();
 			
 			talkList.add(talk);
@@ -91,18 +94,37 @@ public class TalklistDAO {
 		}
 	}
 
-	public void updateTalklist(String id , String title, String content) {
+	public void updateTalklist(String no, String title, String content) {
 		try {
 			conn = DBManager.getConnection();
-			String str = "update talklist set talk_title = ?,talk_content = ? where user_id = ?";
+			String str = "update talklist set talk_title = ?,talk_content = ? where talk_no = ?";
 			pstmt = conn.prepareStatement(str);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
-			pstmt.setString(3, id);
+			pstmt.setString(3, no);
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getBoardPW(String no) {
+		String getPw = "";
+		int tempNo = Integer.parseInt(no);
+		try {
+			conn = DBManager.getConnection();
+			String str = "Select * from talklist where talk_no = ?";
+			
+			pstmt = conn.prepareStatement(str);
+			pstmt.setInt(1, tempNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+				getPw = rs.getString(5);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return getPw;
 	}
 	
 	public void deleteTalk(String id) {

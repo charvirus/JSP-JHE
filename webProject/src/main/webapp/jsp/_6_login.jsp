@@ -14,7 +14,7 @@
 		<nav></nav>
 		<main>
 			<section>
-				<form method="post" action="_6_loginPro.jsp">
+				<form method="post" action="service?command=loginPro">
 					<article id="idpws">
 						<span>ID&#9;<input type="text" name="id" required></span>
 						<span>PW&#9;<input type="password" name="pw" required></span>
@@ -29,4 +29,15 @@
 		<footer id="subfooter2"></footer>
 	</div>
 </body>
+<%
+String logResult = String.valueOf(session.getAttribute("logResult"));
+
+if (logResult.equals("0")) {
+%>
+<script>
+	alert("ID 혹은 비밀번호가 틀립니다.");
+</script>
+<%
+}
+%>
 </html>
