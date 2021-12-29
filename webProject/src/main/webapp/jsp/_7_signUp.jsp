@@ -9,7 +9,7 @@
 <title>MovieBox - 회원가입</title>
 </head>
 <%
-	UserListDAO dao = UserListDAO.getInstance();
+UserListDAO dao = UserListDAO.getInstance();
 %>
 <body>
 	<div id="grid">
@@ -19,8 +19,9 @@
 		<nav></nav>
 		<main>
 			<section>
-				<form method="post" action="_7_signUpPro.jsp">
+				<form method="post" action="service?command=signUpPro">
 					<article id="idpws">
+						<span>이름&#9;<input type="text" name="name" required></span>
 						<span>닉네임&#9;<input type="text" name="nickname" required></span>
 						<span>ID&#9;<input type="text" id="id" name="id" required></span>
 						<span>PW&#9;<input type="password" name="pw" required></span>
@@ -34,8 +35,18 @@
 		<footer id="mainfooter"><jsp:include page="bottom.jsp"></jsp:include></footer>
 		<footer id="subfooter2"></footer>
 	</div>
-	<script>
-		
-	</script>
 </body>
+
+<%
+String signUpResult = String.valueOf(session.getAttribute("signUpResult"));
+
+if (signUpResult.equals("0")) {
+%>
+<script>
+	alert("ID가 중복됩니다.");
+</script>
+<%
+request.getSession().removeAttribute("signUpResult");
+}
+%>
 </html>

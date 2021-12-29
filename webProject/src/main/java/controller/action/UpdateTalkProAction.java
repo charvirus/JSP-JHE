@@ -16,7 +16,6 @@ public class UpdateTalkProAction implements Action {
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String url = "";
-
 		String no = request.getParameter("no");
 		String pw = request.getParameter("pw");
 		String title = request.getParameter("title");
@@ -28,10 +27,10 @@ public class UpdateTalkProAction implements Action {
 
 		if (getPw.equals(pw)) {
 			dao.updateTalklist(no, title, contents);
-			url = "service?command=watchTalk&no=" + no;
+			url = "jsp/_11_talkListView.jsp?no=" + no;
 		}else {
 			request.getSession().setAttribute("updateResult", 0);
-			url = "service?command=updateTalkForm&no="+no;
+			url = "jsp/_12_talkListUpdate.jsp?no="+no;
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

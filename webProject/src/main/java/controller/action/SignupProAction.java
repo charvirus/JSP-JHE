@@ -8,30 +8,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import userlist.UserListDAO;
+import userlist.UserListDTO;
 
-public class LoginProAction implements Action {
+public class SignupProAction implements Action {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		String url = "";
 		UserListDAO dao = UserListDAO.getInstance();
-		
+		String nickName = request.getParameter("nickname");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String url = "";
-		System.out.println(id);
-		System.out.println(pw);
-		if (dao.checkLogin(id, pw)) {
-			request.getSession().setAttribute("logResult", 1);
-			request.getSession().setAttribute("log", id); 
-			url="jsp/_1_main.jsp";
-		}else {
-			request.getSession().setAttribute("logResult", 0);
-			url="jsp/_6_login.jsp";
+		String name = request.getParameter("name");
+		UserListDTO newUser = new UserListDTO(id, pw, nickName,name);
+
+		if (dao.addUser(newUser) != -1) {
+			url = "jsp/_1_main.jsp";
+		} else {
+			request.getSession().setAttribute("signUpResult", 0);
+			url = "jsp/_7_signUp.jsp";
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url); // set
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 

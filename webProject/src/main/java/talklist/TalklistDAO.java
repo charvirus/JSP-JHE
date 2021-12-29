@@ -66,7 +66,7 @@ public class TalklistDAO {
 				int likes = Integer.parseInt(rs.getString(6));
 				Timestamp regDate = Timestamp.valueOf(rs.getString(7));
 
-				talkList.add(new TalklistDTO(tno, uid,password, title, content, likes, regDate));
+				talkList.add(new TalklistDTO(tno, uid, password, title, content, likes, regDate));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,15 +79,15 @@ public class TalklistDAO {
 			talkList = new ArrayList<>();
 
 			conn = DBManager.getConnection();
-			
+
 			String str = "insert into talklist(user_id,talk_password,talk_title,talk_content) " + "values(?,?,?,?)";
 			pstmt = conn.prepareStatement(str);
 			pstmt.setString(1, talk.getUser_id());
-			pstmt.setString(2,talk.getTalk_password());
+			pstmt.setString(2, talk.getTalk_password());
 			pstmt.setString(3, talk.getTalk_title());
 			pstmt.setString(4, talk.getTalk_content());
 			pstmt.executeUpdate();
-			
+
 			talkList.add(talk);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,7 +103,7 @@ public class TalklistDAO {
 			pstmt.setString(2, content);
 			pstmt.setString(3, no);
 			pstmt.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -114,19 +114,31 @@ public class TalklistDAO {
 		try {
 			conn = DBManager.getConnection();
 			String str = "Select * from talklist where talk_no = ?";
-			
+
 			pstmt = conn.prepareStatement(str);
 			pstmt.setInt(1, tempNo);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next())
+
+			if (rs.next())
 				getPw = rs.getString(5);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return getPw;
 	}
-	
+
+	public void upLike(String id) {
+		try {
+			conn = DBManager.getConnection();
+			String str = "update talklist set talk_likes = talk_likes+ 1 where talk_no = ?";
+			pstmt = conn.prepareStatement(str);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void deleteTalk(String id) {
 		try {
 			conn = DBManager.getConnection();
@@ -134,9 +146,8 @@ public class TalklistDAO {
 			pstmt = conn.prepareStatement(str);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

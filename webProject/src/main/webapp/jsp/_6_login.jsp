@@ -38,6 +38,7 @@ if (logResult.equals("0")) {
 	alert("ID 혹은 비밀번호가 틀립니다.");
 </script>
 <%
+request.getSession().removeAttribute("logResult");
 }
 %>
 </html>

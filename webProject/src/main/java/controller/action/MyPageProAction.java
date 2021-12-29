@@ -7,24 +7,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import talklist.TalklistDAO;
-import talklist.TalklistDTO;
+import userlist.UserListDAO;
 
-public class WriteTalkProAction implements Action {
+public class MyPageProAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		String url = "jsp/_9_talkList.jsp";
+
+		UserListDAO dao = UserListDAO.getInstance();
+		String url = "";
 
 		String id = (String) request.getSession().getAttribute("log");
-		String title = request.getParameter("title");
-		String contents = request.getParameter("contents");
-		String password = request.getParameter("pw");
-		TalklistDAO dao = TalklistDAO.getInstance();
-		TalklistDTO newTalk = new TalklistDTO(id, password, title, contents);
-
-		dao.addTalklist(newTalk);
+		String pw = request.getParameter("pw");
+		if (dao.checkLogin(id, pw)) {
+			url = "jsp/_15_MyPage.jsp";
+		} else {
+			request.getSession().setAttribute("myPageResult", 0);
+			url = "jsp/_14_MyPageCheck.jsp";
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

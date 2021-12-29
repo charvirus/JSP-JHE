@@ -7,24 +7,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import talklist.TalklistDAO;
-
-public class DeleteTalkAction implements Action {
-	String no = "";
-
-	public DeleteTalkAction(String no) {
-		this.no = no;
-	}
+public class LogoutAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		
-		TalklistDAO dao = TalklistDAO.getInstance();
-		dao.deleteTalk(no);
-		String url = "jsp/_9_talkList.jsp";
+		String ses = (String) request.getSession().getAttribute("log");
+		String url = "jsp/_1_main.jsp";
+		if (ses != null) {
+			request.getSession().removeAttribute("log");
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
+
 	}
 
 }

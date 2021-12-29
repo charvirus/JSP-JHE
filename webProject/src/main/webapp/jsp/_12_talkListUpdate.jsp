@@ -71,6 +71,7 @@ String ses = (String) session.getAttribute("log");
 		alert("비밀번호가 다릅니다.");
 	</script>
 	<%
+	request.getSession().removeAttribute("updateResult");
 	}
 	%>
 </body>

@@ -1,3 +1,6 @@
+<%@page import="userlist.UserListDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="userlist.UserListDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +11,7 @@
 </head>
 <%
 String ses = (String) session.getAttribute("log");
+UserListDAO dao = UserListDAO.getInstance();
 %>
 
 <body>
@@ -16,20 +20,23 @@ String ses = (String) session.getAttribute("log");
 			<li><a href="service?command=academy">아카데미 작품상</a></li>
 			<li><a href="service?command=boxOffice">극장 상영작 영화</a></li>
 			<li><a href='service?command=talkList'>영화 게시판</a></li>
-			<li><a href="jsp/_14_MyPageCheck.jsp">마이페이지</a></li>
+			<li><a href="service?command=myPage">마이페이지</a></li>
 		</ul>
 		<ul id="headerMenu2">
 			<%
 			if (ses != null) {
+				ArrayList<UserListDTO> user = dao.getUserByid(ses);
+
+				String nickName = user.get(0).getUser_nickname();
 			%>
-			<h3><%=ses%>님
+			<h3><%=nickName%>님
 			</h3>
-			<button onclick="location.href = '_8_logoutPro.jsp'">로그아웃</button>
+			<button onclick="location.href = 'service?command=logout'">로그아웃</button>
 			<%
 			} else {
 			%>
 			<li id="headerLogin"><a href="service?command=login">로그인</a></li>
-			<li id="headerSignUp"><a href="_7_signUp.jsp">회원가입</a></li>
+			<li id="headerSignUp"><a href="service?command=signUp">회원가입</a></li>
 			<%
 			}
 			%>
