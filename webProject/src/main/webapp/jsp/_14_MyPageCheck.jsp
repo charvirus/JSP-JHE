@@ -33,7 +33,7 @@ String ses = (String) session.getAttribute("log");
 				%>
 				<script>
 					alert("로그인 해주세요.");
-					window.location.href = '_6_login.jsp';
+					window.location.href = 'service?command=login';
 				</script>
 				<%
 				}

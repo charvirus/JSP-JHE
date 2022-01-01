@@ -1,3 +1,5 @@
+<%@page import="userlist.UserListDTO"%>
+<%@page import="userlist.UserListDAO"%>
 <%@page import="commentlist.CommentListDTO"%>
 <%@page import="commentlist.CommentListDAO"%>
 <%@page import="talklist.TalklistDTO"%>
@@ -11,15 +13,16 @@
 <meta charset="UTF-8">
 <%
 String ses = (String) session.getAttribute("log");
-TalklistDAO tdao = TalklistDAO.getInstance();
 String no = request.getParameter("no");
+TalklistDAO tdao = TalklistDAO.getInstance();
 ArrayList<TalklistDTO> tboards = tdao.getTalklistDetails(no);
-String uid = tboards.get(0).getUser_id();
-String getPw = tdao.getBoardPW(no);
-
 CommentListDAO cdao = CommentListDAO.getInstance();
 ArrayList<CommentListDTO> cboards = cdao.getCommentListByTid(no);
-
+UserListDAO udao = UserListDAO.getInstance();
+ArrayList<UserListDTO> uboards = udao.getUserByid(ses);
+String uNickname = uboards.get(0).getUser_nickname();
+String uid = tboards.get(0).getUser_id();
+String getPw = tdao.getBoardPW(no);
 
 
 %>
@@ -97,7 +100,7 @@ ArrayList<CommentListDTO> cboards = cdao.getCommentListByTid(no);
 					<input type="text" name="comment_content" id="comment">
 					<button onclick="addComment(form)">등록</button>
 					<input  type="hidden" name="command" value="comment">
-					<input  type="hidden" name="uid" value="<%=ses%>">
+					<input  type="hidden" name="uid" value="<%=uNickname%>">
 					<input  type="hidden" name="tid" value="<%=no%>">
 				</form>
 				<%
